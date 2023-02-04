@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
          aspectRatio : 6/4, 
          borderTopLeftRadius : 7,
          borderTopRightRadius : 7,
-         resizeMode : 'contain'
+         resizeMode : 'cover'
     },
     containerImage : {
         margin : 10,
