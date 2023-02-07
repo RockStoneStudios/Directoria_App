@@ -5,6 +5,7 @@ import Home from './screen/Home';
 import Nosotros from './screen/Nosotros';
 import BottomTabs from './navigators/BottomTabs';
 import Servicios from './screen/Servicios';
+import ProductoDetalle from './screen/ProductoDetalle';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,6 +16,7 @@ export default function App() {
           <Stack.Navigator  screenOptions={{headerShown : false}}>
             <Stack.Screen name='Home' component={Home}/>
             <Stack.Screen name='BottomTabs' component={BottomTabs}/>
+            <Stack.Screen name='ProductoDetalle' component={ProductoDetalle}/>
             
           </Stack.Navigator>
       </NavigationContainer>
