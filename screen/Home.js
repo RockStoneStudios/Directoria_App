@@ -13,7 +13,7 @@ import ItemNegocio from '../components/ItemNegocio';
 const Home = () => {
 
     const navigation = useNavigation();
-    const {categorias,negocios} = useContext(Directorio)
+    const {categorias,negocios,categoria} = useContext(Directorio)
  
    
     
@@ -58,9 +58,13 @@ const Home = () => {
          </View>
          <View>
            {
-             negocios.map(item => (
-               <ItemNegocio key={item._id}  item={item}/>
-             ))
+              Object.entries(categoria)?.length != 0 ? ( categoria.negocios?.map(item => (
+                <ItemNegocio key={item._id}  item={item}/>
+              ))) :  (negocios?.map(item => (
+                <ItemNegocio key={item._id}  item={item}/>
+              ))
+              )
+               
            }
          </View>
         </View>

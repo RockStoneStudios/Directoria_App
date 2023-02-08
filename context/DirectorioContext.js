@@ -8,6 +8,15 @@ const DirectorioContext = ({children}) => {
    const [negocios,setNegocios] = useState([]);
    const [negocio,setNegocio] = useState({});
    const [producto,setProducto] = useState({});
+   const [categoria,setCategoria] = useState({});
+
+
+   const obtenerCategoria = async id => {
+      const {data} = await clienteAxios.get(`categorias/${id}`);
+      setCategoria(data);
+   }
+
+
 
     const obtenerCategorias = async () => {
        const {data} = await clienteAxios.get('categorias/');
@@ -54,7 +63,9 @@ const DirectorioContext = ({children}) => {
       obtenerNegocio,
       negocio,
       producto,
-      obtenerProducto
+      obtenerProducto,
+      obtenerCategoria,
+      categoria
       }}>
        {children}
      </Directorio.Provider>  

@@ -1,9 +1,11 @@
 import { StyleSheet, Text, View ,Image, TouchableOpacity} from 'react-native'
-import React from 'react'
+import React,{useContext} from 'react'
+import { Directorio } from '../context/DirectorioContext';
 
 const ItemCategory = ({item}) => {
+ const {obtenerCategoria} = useContext(Directorio)
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={()=> obtenerCategoria(item._id)}>
 
         <View style = {styles.container}>
             <Image source={{uri : `${item.imagen}`}} style={styles.imagen}/>

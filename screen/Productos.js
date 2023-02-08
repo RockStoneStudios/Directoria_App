@@ -242,7 +242,8 @@ const styles = StyleSheet.create({
        borderWidth : 2,
        height : 2,
        width : 150,
-       marginTop : 3
+       marginTop : 3,
+       marginBottom : 15
     }
 
 })

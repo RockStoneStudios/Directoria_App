@@ -6,13 +6,15 @@ import { useNavigation } from '@react-navigation/native';
 
 
 const ProductoCard = ({item}) => {
-    const {obtenerProducto} = useContext(Directorio);
+  const [like,setlike] = useState(false);  
+  const {obtenerProducto} = useContext(Directorio);
+    
     const navigation = useNavigation();
   return (
     <View style={{...styles.productoContainer,marginBottom : 20}}>
       <View>
           <View style={styles.container}>
-              <Text>{item.nombre}</Text>
+              <Text style={styles.nombre}>{item.nombre}</Text>
               <Text>${item.precio}</Text>
           </View>
           <View style={styles.containerEstrellas}>
@@ -28,8 +30,20 @@ const ProductoCard = ({item}) => {
             </View>
           </View>
             <View style={styles.containerIcons}>
-              <AntDesign style={styles.circuloIcons} name='hearto' size={24} color="#ae1002" />
-              <MaterialCommunityIcons style={{...styles.circuloIcons,marginLeft : 5}} name='share-outline' size={24} color="#ff72cf"/>
+              <AntDesign 
+              onPress={()=>setlike(!like)}
+              style={styles.circuloIcons}
+              name= {like ? 'heart' : 'hearto'}
+              size={24} 
+              color="#ae1002" 
+              />
+              <MaterialCommunityIcons 
+              onPress={()=> {
+                obtenerProducto(`${item._id}`)
+                navigation.navigate('ProductoDetalle')
+              }}
+              style={{...styles.circuloIcons,marginLeft : 5}}
+              name='share-outline' size={24} color="#ff72cf"/>
             </View>
         </View>
         <View style={styles.imagenContainer}>
@@ -52,6 +66,11 @@ const styles = StyleSheet.create({
   container : {
       marginLeft : 10,
       
+  },
+  nombre : {
+     fontSize : 15,
+     fontWeight : '700',
+     color : "#622"
   },
   containerEstrellas : {
     width : 90,

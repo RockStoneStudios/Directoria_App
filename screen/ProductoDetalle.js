@@ -51,8 +51,11 @@ const ProductoDetalle = () => {
                   </View>
              </View>
                <View style={styles.containerIngredientes}>
-                  <Text style={styles.tituloIngredientes}>Ingredientes</Text>
+                 {
+                   producto?.ingredientes?.length > 1  ?  <Text style={styles.tituloIngredientes}>Ingredientes</Text> :null
+                 }
                   {
+                    
                      producto.ingredientes?.map((ingredient,index) =>(
                         <View key={index} style={styles.ingredient}>
                             <View
@@ -118,10 +121,10 @@ export default ProductoDetalle
 
 const styles = StyleSheet.create({
     imagenBackground : {
-      padding : SPACING,
-      height : height/2.4,
-      paddingTop : SPACING*4,
-      resizeMode : 'contain',
+      padding : SPACING*2,
+      height : height/2.5,
+      paddingTop : SPACING*3,
+      resizeMode : 'cover',
       flexDirection : 'row',
       justifyContent : 'space-between'
     },
@@ -131,17 +134,16 @@ const styles = StyleSheet.create({
       backgroundColor : '#eef',
       justifyContent : 'center',
       alignItems : 'center',
-      borderRadius : SPACING*2.2
+      borderRadius : SPACING*2.5
     },
     containerInfo : {
-      padding: SPACING*2,
-      paddingTop : SPACING*3,
-      marginTop : -SPACING*3,
-      borderTopLeftRadius : SPACING*3,
-      borderTopRightRadius : SPACING*3,
-      backgroundColor : '#fff',
-      flexDirection : 'row',
-      alignItems : 'center'
+      padding: SPACING * 2,
+      paddingTop: SPACING * 3,
+      marginTop: -SPACING * 3,
+      borderTopLeftRadius: SPACING * 3,
+      borderTopRightRadius: SPACING * 3,
+      backgroundColor: "#fff",
+      
     },
      containerNombre : {
        width : '70%'
