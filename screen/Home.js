@@ -44,7 +44,7 @@ const Home = () => {
             </View>
          </TouchableOpacity>
          <View>
-           <Text style={styles.itemText}>Explora todo lo que sopetrán tiene para ofrecerte</Text>
+           <Text style={styles.itemText}>Todo Sopetrán en un solo Click !!</Text>
          </View>
          <View>
             <FlatList 
@@ -101,8 +101,8 @@ const styles = StyleSheet.create({
       itemText :{
         fontSize : 17,
         fontWeight : '800',
-        paddingHorizontal : 8,
-        paddingVertical : 2
+        paddingHorizontal : 16,
+        paddingVertical : 4
     },
     itemsCategories : {
         flexDirection: "row",

@@ -12,7 +12,7 @@ const Productos = () => {
   const navigation = useNavigation();
   const {negocio} = useContext(Directorio);
   return (
-    <SafeAreaView>
+    <SafeAreaView >
      <ScrollView style={{backgroundColor : '#fff'}}>
         <StatusBar translucent  backgroundColor= "rgba(0,0,0,0.1)"/>
         <View style={styles.iconsContainer}>
@@ -38,7 +38,7 @@ const Productos = () => {
                 <Text style={styles.direccion}>{negocio.direccion}</Text>
                 <View style={{flexDirection : 'row', alignItems : 'center',marginTop : 5}}>
                   <AntDesign name='phone' size={26} color= '#191919' />
-                  <Text style={{marginLeft : 5}}>{negocio.telefono}</Text>
+                  <Text style={styles.telefono}>{negocio.telefono}</Text>
                 </View>
             </View>
             <View>
@@ -47,7 +47,7 @@ const Productos = () => {
                 <AntDesign name='star' size={25} color="white"/>
               </View>
               <View style={styles.productos}>
-                <Text style={{marginRight : 5,color : 'white', fontWeight : '700'}}>{negocio.productos.length}</Text>
+                <Text style={{marginRight : 8,color : 'white', fontWeight : '700'}}>{negocio.productos.length}</Text>
                 <Text style={styles.textoProducto}>Productos</Text>
               </View>
             </View>
@@ -100,15 +100,24 @@ const Productos = () => {
           </TextInput>
         </View>
         <View>
-          <Text style={styles.tituloMenu}>Nuestro Menu</Text>
+          <Text style={styles.tituloMenu}>Nuestros Productos</Text>
           <Text style={styles.decoracion} />
-        </View>
-        <View>
+      
+         <View>
            {
-             negocio.productos.map((item)=> 
-                <ProductoCard key={item._id} item ={item}/>
-             )
+              negocio.productos.length > 0 ?  ( 
+                
+              negocio.productos.map((item)=> (
+              <ProductoCard key={item._id} item ={item}/>)
+           )) : (
+           <View style={styles.containerMensaje}> 
+                <Text style = {styles.mensaje}>Nosotros no ofrecemos Productos Pero si Servicios visitanos!! </Text> 
+            </View>
+          )
+             
+              
            }
+        </View>
         </View>
       </ScrollView> 
     </SafeAreaView>
@@ -147,11 +156,11 @@ const styles = StyleSheet.create({
     width : 300
    },
    nombre : {
-      fontSize : 18,
+      fontSize : 22,
       fontWeight : '800'
    },
    desc : {
-     fontSize : 13,
+     fontSize : 14,
      color : 'gray',
      fontWeight : '500',
      marginTop : 5,
@@ -161,6 +170,11 @@ const styles = StyleSheet.create({
     fontSize : 15,
     color : '#60a286',
     fontWeight : '500'
+   },
+   telefono : {
+     fontSize : 16,
+     fontWeight : '700',
+     marginLeft : 2
    },
    rating : {
       flexDirection : 'row',
@@ -173,10 +187,10 @@ const styles = StyleSheet.create({
       borderTopLeftRadius : 10
    },
    productos : {
-    
+     marginHorizontal : -6,
      alignItems : 'center',
      width :120,
-     padding : 4,
+     paddingHorizontal : 8,
      backgroundColor : '#F9629F',
      marginTop : 8,
      borderTopLeftRadius : 12
@@ -233,17 +247,29 @@ const styles = StyleSheet.create({
        fontSize : 17,
        marginTop : 5,
        color : "#343",
-       fontWeight : '700',
-       
+       fontWeight : '700', 
        
     },
     decoracion : {
        borderColor :"#de1595",
        borderWidth : 2,
        height : 2,
-       width : 150,
+       width : 200,
        marginTop : 3,
        marginBottom : 15
+    },
+    containerMensaje : {
+       backgroundColor : "#fff",
+       flex : 5,
+       alignItems : 'center',
+       justifyContent : 'flex-end',
+       marginTop : 50
+    },
+    mensaje : {
+       fontSize : 18,
+       fontWeight : '700',
+       color : "#122",
+       textAlign : 'center'
     }
 
 })

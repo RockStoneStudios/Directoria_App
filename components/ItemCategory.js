@@ -19,11 +19,15 @@ export default ItemCategory
 
 const styles = StyleSheet.create({
     container : {
-        margin : 10
+        marginHorizontal : 10,
+        marginVertical : 5,
+        flex : 1,
+        alignItems : 'center',
+        justifyContent : 'flex-start'
     },
     imagen: {
-        width : 70,
-        height : 70,
+        width : 65,
+        height : 65,
         borderRadius : 30,
         marginRight : 10,
         resizeMode : 'cover',
@@ -34,7 +38,7 @@ const styles = StyleSheet.create({
         fontWeight : '600',
         color : "#6e6e7e",
         marginTop : 4,
-        alignItems:'center',
+        textAlign : 'left',
         marginHorizontal : 8
     }
 })

@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
        width : '70%'
      },
     nombre: {
-      fontSize : SPACING*3,
+      fontSize : SPACING*3, 
       color : '#223',
       fontWeight : '700'
     },

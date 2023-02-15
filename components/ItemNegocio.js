@@ -71,6 +71,9 @@ const styles = StyleSheet.create({
     },
     containerImage : {
         margin : 10,
+        borderBottomColor : '#fe9111',
+        borderBottomWidth : 0.8,
+        borderBottomLeftRadius :5
     },
     nombre : {
         fontSize : 17,
