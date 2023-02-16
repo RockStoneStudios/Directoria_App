@@ -3,13 +3,21 @@ import React, {useContext} from 'react';
 import { Directorio } from '../context/DirectorioContext'; 
 import SPACING from '../config/Spacing';
 import { useNavigation } from '@react-navigation/native';
-import {Ionicons,FontAwesome} from '@expo/vector-icons'
-
+import {Ionicons,FontAwesome} from '@expo/vector-icons';
+import * as Linking from 'expo-linking';
+import * as Animatable from 'react-native-animatable';
 const height = Dimensions.get('screen').height;
 
 const Servicios = () => {
     const navigation = useNavigation();
      const {negocio}  = useContext(Directorio);
+
+
+
+      const handlePhone = async => {
+         Linking.openURL(`tel:${negocio.telefono}`)
+      }
+
   return (
     <>
     <ScrollView style={{backgroundColor : '#fff'}}>
@@ -26,10 +34,14 @@ const Servicios = () => {
                   <View style={styles.containerNombre}>
                      <Text style={styles.nombre}>{negocio.nombre}</Text>
                   </View>
-                  <View style={styles.containerTelefono}>
-                     <FontAwesome name='mobile-phone' color="#233" size={SPACING*3.6}/>
-                     <Text style={styles.telefono}>{negocio.telefono}</Text>
-                  </View>
+                  <Animatable.View  animation='wobble' easing= 'ease-in' duration={1200} style={styles.containerTelefono}>
+                     <TouchableOpacity 
+                      onPress={handlePhone}
+                      style={{flexDirection : 'row',alignItems : 'center'}}>
+                        <FontAwesome name='mobile-phone' color="#233" size={SPACING*3.6}/>
+                        <Text style={styles.telefono}>{negocio.telefono}</Text>
+                     </TouchableOpacity>
+                  </Animatable.View>
               </View>
         </View>
 
@@ -144,7 +156,7 @@ containerServicios : {
   },
    servicio : {
     color: '#444',
-    fontSize : SPACING*1.5,
+    fontSize : SPACING*1.4,
     fontWeight : '700',
     marginLeft : 5
 },

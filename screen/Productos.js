@@ -1,16 +1,26 @@
 import { StyleSheet, Text, View , TouchableOpacity, SafeAreaView, StatusBar, TextInput, ScrollView} from 'react-native'
-import React,{useContext} from 'react';
+import React,{useContext, useEffect, useState} from 'react';
 import { useNavigation } from '@react-navigation/native';
 import {Ionicons,FontAwesome5,MaterialCommunityIcons,AntDesign,FontAwesome} from '@expo/vector-icons';
 import { Directorio } from '../context/DirectorioContext';
 import ProductoCard from '../components/ProductoCard';
+import  * as Linking from 'expo-linking';
 
-
+import * as Animatable from 'react-native-animatable';
 
 
 const Productos = () => {
   const navigation = useNavigation();
   const {negocio} = useContext(Directorio);
+
+
+
+
+  const handleWhatsApp = async () => {
+      await Linking.openURL(`https://wa.me/+57${negocio.telefono}?text=Hola Me Puedes atender?`)
+  }
+
+
   return (
     <SafeAreaView >
      <ScrollView style={{backgroundColor : '#fff'}}>
@@ -37,8 +47,10 @@ const Productos = () => {
                 <Text style={styles.desc}>{negocio.descripcion}</Text>
                 <Text style={styles.direccion}>{negocio.direccion}</Text>
                 <View style={{flexDirection : 'row', alignItems : 'center',marginTop : 5}}>
-                  <AntDesign name='phone' size={26} color= '#191919' />
-                  <Text style={styles.telefono}>{negocio.telefono}</Text>
+                  <TouchableOpacity style={{flexDirection : 'row', alignItems : 'center'}} onPress={handleWhatsApp}>
+                   <FontAwesome name='whatsapp' size={28} color= '#10ef10' />
+                   <Animatable.Text animation='pulse' easing="ease-in-out" iterationCount='infinite' style={styles.telefono}>{negocio.telefono}</Animatable.Text>
+                  </TouchableOpacity>
                 </View>
             </View>
             <View>
@@ -174,7 +186,8 @@ const styles = StyleSheet.create({
    telefono : {
      fontSize : 16,
      fontWeight : '700',
-     marginLeft : 2
+     marginLeft : 3,
+     color : "#447"
    },
    rating : {
       flexDirection : 'row',

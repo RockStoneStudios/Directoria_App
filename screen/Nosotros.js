@@ -11,7 +11,8 @@ import {
   import {MaterialIcons,AntDesign} from '@expo/vector-icons'
   import {useContext,useState} from 'react';
   import { Directorio } from "../context/DirectorioContext";
-  import {useNavigation} from '@react-navigation/native'  
+  import {useNavigation} from '@react-navigation/native';
+  import * as Animatable from 'react-native-animatable';
 
   
 
@@ -40,9 +41,11 @@ import {
                </ImageBackground>
                <View style={styles.infoContainer}>
                      <TouchableOpacity style={styles.iconContainer} activeOpacity={0.7} onPress={()=> setLike(!like)}>
+                        <Animatable.View  animation='pulse' iterationCount='infinite'>
                           {
                             like ? ( <AntDesign name='heart' size={28} color= "#ea1000"/>) : (<AntDesign name="hearto" size={28} color="#ea1000"/>)
                           }
+                      </Animatable.View>
                      </TouchableOpacity>
                <View style={styles.direccionContainer}>
                   <MaterialIcons name="place" size={28} color= "#12aeee"/>
